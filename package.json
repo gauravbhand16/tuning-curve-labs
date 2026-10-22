@@ -1,0 +1,9 @@
+{
+  "name": "tuning-curve-labs-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Tuning Curve Labs website for Vercel",
+  "dependencies": {
+    "nodemailer": "^6.9.16"
+  }
+}
