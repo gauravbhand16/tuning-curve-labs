@@ -1,0 +1,24 @@
+---
+import { site } from '@content/site';
+---
+<form class="lead-form">
+  <input name="website" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" />
+  <div class="form-grid">
+    <label><span class="form-label">Name <span aria-hidden="true">*</span></span><input name="Name" autocomplete="name" required /></label>
+    <label><span class="form-label">Email <span aria-hidden="true">*</span></span><input name="Email" type="email" autocomplete="email" required /></label>
+    <label><span class="form-label">Country <span aria-hidden="true">*</span></span><select name="Country" autocomplete="country-name" data-country-select required><option value="">Select country</option><option value="India">India</option><option value="United Arab Emirates">United Arab Emirates</option><option value="Saudi Arabia">Saudi Arabia</option><option value="Qatar">Qatar</option><option value="Kuwait">Kuwait</option><option value="Oman">Oman</option><option value="Bahrain">Bahrain</option><option value="United States">United States</option><option value="United Kingdom">United Kingdom</option><option value="Singapore">Singapore</option><option value="Australia">Australia</option><option value="Other">Other</option></select></label>
+    <fieldset class="phone-field"><legend>Phone number <span class="optional">Optional</span></legend><div class="phone-grid"><label><span class="sr-only">Country code</span><select name="CountryCode" aria-label="Country code" data-country-code-select><option value="">Select code</option><option value="+91">ðŸ‡®ðŸ‡³ +91</option><option value="+971">ðŸ‡¦ðŸ‡ª +971</option><option value="+966">ðŸ‡¸ðŸ‡¦ +966</option><option value="+974">ðŸ‡¶ðŸ‡¦ +974</option><option value="+965">ðŸ‡°ðŸ‡¼ +965</option><option value="+968">ðŸ‡´ðŸ‡² +968</option><option value="+973">ðŸ‡§ðŸ‡­ +973</option><option value="+1">ðŸ‡ºðŸ‡¸ +1</option><option value="+44">ðŸ‡¬ðŸ‡§ +44</option><option value="+65">ðŸ‡¸ðŸ‡¬ +65</option><option value="+61">ðŸ‡¦ðŸ‡º +61</option></select></label><label><span class="sr-only">Phone number</span><input name="Phone" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="Phone number" /></label></div></fieldset>
+    <label class="form-details"><span class="form-label">Details <span aria-hidden="true">*</span></span><textarea name="Details" required placeholder="Tell us what you need help with." rows="4"></textarea></label>
+  </div>
+  <div class="form-submit-row"><button class="button button--blue submit" type="submit">Send Enquiry</button><p class="form-msg" role="status" aria-live="polite"></p></div>
+  <div class="form-contact-options" aria-label="Other ways to get in touch">
+    <span class="form-contact-label">Prefer to connect directly and fast?</span>
+    <a class="form-contact-option" href={site.whatsappUrl} target="_blank" rel="noreferrer" aria-label="Message Tuning Curve Labs on WhatsApp (opens in a new tab)">
+      <svg class="whatsapp-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a9.7 9.7 0 0 0-8.4 14.5L2.3 22l5.7-1.5A9.7 9.7 0 1 0 12 2Zm0 17.8a8 8 0 0 1-4.1-1.1l-.3-.2-3.4.9.9-3.3-.2-.3A8 8 0 1 1 12 19.8Zm4.4-6c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.8.9-.1.2-.3.2-.5.1-.2-.1-1-.4-1.9-1.2-.7-.6-1.2-1.4-1.3-1.6-.1-.2 0-.4.1-.5l.4-.4.2-.4c.1-.2 0-.3 0-.4l-.7-1.7c-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 1.9s.8 2.2.9 2.4c.1.2 1.6 2.5 3.8 3.4.5.2 1 .4 1.3.5.5.2 1 .2 1.4.1.4-.1 1.4-.6 1.6-1.1.2-.5.2-1 .2-1.1-.1-.1-.3-.2-.5-.3Z"/></svg>
+      WhatsApp
+    </a>
+    <a class="form-contact-option form-contact-option--booking" href={site.bookingUrl} target="_blank" rel="noreferrer">Fix your sales leak now for free. <span aria-hidden="true">â†—</span></a>
+  </div>
+  <p class="form-privacy">Your enquiry is sent to us directly from this page. Read our <a href="/privacy/">Privacy Notice</a>.</p>
+  <noscript><p class="form-note">To enquire, email <a href={`mailto:${site.email}`}>{site.email}</a>.</p></noscript>
+</form>

@@ -1,0 +1,36 @@
+---
+import SiteLayout from '@layouts/SiteLayout.astro';
+import { bookingLabel, services, site } from '@content/site';
+---
+<SiteLayout title="Services | Tuning Curve Labs" description="Six areas where Tuning Curve Labs helps B2B teams: revenue operations, GTM engineering, growth experimentation, social media strategy, marketing execution, and brand and web." path="/services/">
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <span class="eyebrow" data-reveal>Services</span>
+      <h1 data-reveal style="--rd:60ms">Where we <em>can help.</em></h1>
+      <p data-reveal style="--rd:140ms">Six areas of B2B growth. We recommend only the ones that match what we find.</p>
+      <a class="button button--blue" data-reveal style="--rd:220ms" href={site.bookingUrl} target="_blank" rel="noreferrer">{bookingLabel}<span class="sr-only"> (opens in a new tab)</span></a>
+    </div>
+  </section>
+  <section class="section" style="padding-top:0">
+    <div class="service-list">
+      {services.map((service) => <article class="service-row" id={service.slug} data-reveal><span class="service-index">{service.number}</span><div><h2>{service.name}</h2><p class="service-problem">{service.problem}</p></div><p>{service.summary}</p></article>)}
+    </div>
+  </section>
+  <section class="section" style="padding-top:0">
+    <div class="services-note" data-reveal>
+      <span class="eyebrow">Only what you need</span>
+      <h2>You don't need all six.</h2>
+      <p>We recommend only the areas that make sense for your business, based on what we find. Scope and timing are set after the problem is understood.</p>
+      <a class="button button--outline" href="/#how-we-work">See how we work</a>
+    </div>
+  </section>
+  <section class="section" style="padding-top:0">
+    <div class="cta-card">
+      <h2 data-reveal>Before you add more activity, find out what's getting in the way.</h2>
+      <div class="hero-actions" data-reveal style="--rd:100ms">
+        <a class="button button--blue" href={site.bookingUrl} target="_blank" rel="noreferrer">{bookingLabel}<span class="sr-only"> (opens in a new tab)</span></a>
+      </div>
+      <p class="free-note" data-reveal style="--rd:180ms"><span class="free-dot" aria-hidden="true"></span>Free. You don't pay for this session.</p>
+    </div>
+  </section>
+</SiteLayout>

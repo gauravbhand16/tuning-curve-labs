@@ -1,0 +1,28 @@
+---
+import SiteLayout from '@layouts/SiteLayout.astro';
+import { bookingLabel, site, whyPoints } from '@content/site';
+---
+<SiteLayout title="Why us | Tuning Curve Labs" description="Tuning Curve Labs researches before recommending, works alongside your team, and leaves systems your team can own." path="/why-tcl/">
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <span class="eyebrow" data-reveal>Why us</span>
+      <h1 data-reveal style="--rd:60ms">Fix the right problem, <em>not sell more work.</em></h1>
+      <p data-reveal style="--rd:140ms">We care about finding what's actually in the way before anyone spends more on growth.</p>
+    </div>
+  </section>
+  <section class="section" style="padding-top:0">
+    <div class="page-head"><span class="eyebrow" data-reveal>How we work with you</span></div>
+    <div class="principles-grid">
+      {whyPoints.map((point, index) => <article class="card" data-reveal style={`--rd:${index * 90}ms`}><div class="card-num">0{index + 1}</div><h2>{point.title}</h2><p>{point.text}</p></article>)}
+    </div>
+  </section>
+  <section class="section" style="padding-top:0">
+    <div class="cta-card">
+      <h2 data-reveal>Before you spend more on growth, find out what's getting in the way.</h2>
+      <div class="hero-actions" data-reveal style="--rd:100ms">
+        <a class="button button--blue" href={site.bookingUrl} target="_blank" rel="noreferrer">{bookingLabel}<span class="sr-only"> (opens in a new tab)</span></a>
+      </div>
+      <p class="free-note" data-reveal style="--rd:180ms"><span class="free-dot" aria-hidden="true"></span>Free. You don't pay for this session.</p>
+    </div>
+  </section>
+</SiteLayout>

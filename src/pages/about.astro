@@ -1,0 +1,60 @@
+---
+import SiteLayout from '@layouts/SiteLayout.astro';
+import { bookingLabel, faqs, site, team } from '@content/site';
+---
+<SiteLayout title="About | Tuning Curve Labs" description="Tuning Curve Labs is a B2B GTM strategy and execution consultancy. Meet the team and read how an engagement works." path="/about/">
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <span class="eyebrow" data-reveal>About</span>
+      <h1 data-reveal style="--rd:60ms">A little more about who we are <em>and how we work.</em></h1>
+      <p data-reveal style="--rd:140ms">Tuning Curve Labs is a B2B GTM strategy and execution consultancy. We help businesses understand what's holding back growth and put the right fixes into action.</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0" aria-labelledby="team-title">
+    <div class="page-head"><h2 id="team-title" data-reveal>Meet the team</h2></div>
+    <div class="team-list">
+      {team.map((person, index) => <article class:list={['team-profile', index === 0 && 'team-profile--founder']} data-reveal>
+        <div class="team-photo-wrap"><img src={person.image} alt={person.alt} width={index === 1 ? 800 : 960} height={index === 1 ? 800 : 1280} loading={index === 0 ? 'eager' : 'lazy'} /></div>
+        <div class="team-bio">
+          <span class="eyebrow">{person.role}{person.location ? ` · ${person.location}` : ''}</span>
+          <h3>{person.name}</h3>
+          <p>{person.bio}</p>
+          {person.story && <p>{person.story}</p>}
+          {person.closing && <p>{person.closing}</p>}
+          <div class="team-links">
+            <a href={person.linkedin} target="_blank" rel="noreferrer">LinkedIn <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>
+          </div>
+        </div>
+      </article>)}
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0" aria-labelledby="about-work-title">
+    <div class="about-split">
+      <span class="eyebrow" data-reveal>How we work</span>
+      <div data-reveal style="--rd:80ms">
+        <h2 id="about-work-title">Understand the problem before recommending a solution.</h2>
+        <p>We believe in understanding the problem before recommending a solution. Our work is hands-on, evidence-led and built around what each business actually needs.</p>
+        <a class="text-link" href="/#how-we-work">See the four steps</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0" aria-labelledby="faq-title">
+    <div class="page-head"><h2 id="faq-title" data-reveal>Frequently asked questions</h2></div>
+    <div class="faq-list">
+      {faqs.map((item) => <details data-reveal><summary>{item.question}</summary><p>{item.answer}</p></details>)}
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="cta-card">
+      <h2 data-reveal>Before you spend more on growth, find out what's getting in the way.</h2>
+      <div class="hero-actions" data-reveal style="--rd:100ms">
+        <a class="button button--blue" href={site.bookingUrl} target="_blank" rel="noreferrer">{bookingLabel}<span class="sr-only"> (opens in a new tab)</span></a>
+      </div>
+      <p class="free-note" data-reveal style="--rd:180ms"><span class="free-dot" aria-hidden="true"></span>Free. You don't pay for this session.</p>
+    </div>
+  </section>
+</SiteLayout>

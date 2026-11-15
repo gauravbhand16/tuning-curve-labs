@@ -1,0 +1,35 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../../assets/tcl-logo-header.png';
+import { bookingLabel, site } from '@content/site';
+
+interface Props { currentPath: string }
+const { currentPath } = Astro.props;
+const links = [
+  { href: '/about/', label: 'About' },
+  { href: '/services/', label: 'Services' },
+  { href: '/why-tcl/', label: 'Why us' },
+];
+const isCurrent = (href: string) => currentPath === href || currentPath === href.replace(/\/$/, '');
+---
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="/" aria-label="Tuning Curve Labs home">
+      <Image src={logo} alt="" width={80} height={80} loading="eager" />
+      <span>Tuning Curve Labs</span>
+    </a>
+    <nav class="primary-nav" aria-label="Main">
+      {links.map((link) => <a href={link.href} aria-current={isCurrent(link.href) ? 'page' : undefined}>{link.label}</a>)}
+    </nav>
+    <div class="header-actions">
+      <a class="header-cta" href={site.bookingUrl} target="_blank" rel="noreferrer">{bookingLabel}<span class="sr-only"> (opens in a new tab)</span></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" data-nav-toggle>
+        <span>Menu</span><span class="menu-trigger-icon" aria-hidden="true"><i></i><i></i></span>
+      </button>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobile-nav" data-mobile-nav aria-label="Mobile" aria-hidden="true">
+    {links.map((link) => <a href={link.href} aria-current={isCurrent(link.href) ? 'page' : undefined}>{link.label}</a>)}
+    <a class="button button--blue" href={site.bookingUrl} target="_blank" rel="noreferrer">{bookingLabel}<span class="sr-only"> (opens in a new tab)</span></a>
+  </nav>
+</header>
