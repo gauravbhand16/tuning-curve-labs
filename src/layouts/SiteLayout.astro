@@ -1,0 +1,59 @@
+---
+import logo from '../../assets/tcl-logo-original.png';
+import SiteHeader from '@components/SiteHeader.astro';
+import SiteFooter from '@components/SiteFooter.astro';
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/500.css';
+import '@fontsource/inter/600.css';
+import '@fontsource/inter/700.css';
+import '@fontsource/inter/800.css';
+import '@styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  path?: string;
+  image?: string;
+  noindex?: boolean;
+}
+
+const { title, description, path = '/', image = logo.src, noindex = false } = Astro.props;
+const canonical = new URL(path, 'https://www.tuningcurvelabs.com').toString();
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#04060F" />
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Tuning Curve Labs" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL(image, 'https://www.tuningcurvelabs.com').toString()} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <title>{title}</title>
+    <script is:inline>
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('js-reveal');
+    </script>
+  </head>
+  <body>
+    <canvas class="planet-canvas" data-planet aria-hidden="true"></canvas>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <SiteHeader currentPath={Astro.url.pathname} />
+    <main id="main"><slot /></main>
+    <SiteFooter />
+    <script>
+      import '../scripts/interactions.ts';
+      // The WebGL scene (three.js) is a separate chunk loaded after the page has painted.
+      const loadScene = () => import('../scripts/planet.ts');
+      if (document.readyState === 'complete') loadScene();
+      else window.addEventListener('load', loadScene, { once: true });
+    </script>
+  </body>
+</html>

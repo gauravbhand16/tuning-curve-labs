@@ -1,0 +1,26 @@
+---
+import SiteLayout from '@layouts/SiteLayout.astro';
+import { site } from '@content/site';
+---
+<SiteLayout title="Privacy Notice | Tuning Curve Labs" description="Privacy notice for details submitted through forms on the Tuning Curve Labs website." path="/privacy/">
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <span class="eyebrow">Tuning Curve Labs</span>
+      <h1>Privacy <em>notice.</em></h1>
+      <p>Last updated: 16 September 2026</p>
+    </div>
+  </section>
+  <section class="section" style="padding-top:0">
+    <article class="prose-panel">
+    <p>Tuning Curve Labs LLP runs tuningcurvelabs.com. This notice covers the details you send us through the forms on this site.</p>
+    <h2>What we collect</h2><p>Your name, email address and country, plus anything you choose to add: a phone or WhatsApp number, your company website and your enquiry numbers.</p>
+    <h2>Why we collect it</h2><p>To reply to you, prepare your leak read, and follow up about working together.</p>
+    <h2>What we don't do</h2><p>We don't sell your details or pass them to anyone for their own marketing.</p>
+    <h2>Where it's kept</h2><p>In the email and business software we use to run Tuning Curve Labs.</p>
+    <h2>How long we keep it</h2><p>Until we no longer need it to reply or follow up, or until you ask us to delete it, whichever comes first.</p>
+    <h2>Cookies and tracking</h2><p>This site doesn't use analytics or advertising cookies.</p>
+    <h2>Your choices</h2><p>Email <a href={`mailto:${site.email}`}>{site.email}</a> to see, correct or delete the details we hold about you, or to stop hearing from us. We'll confirm once it's done.</p>
+    <h2>Contact</h2><p>{site.legalName}, {site.location} · <a href={`mailto:${site.email}`}>{site.email}</a></p>
+    </article>
+  </section>
+</SiteLayout>

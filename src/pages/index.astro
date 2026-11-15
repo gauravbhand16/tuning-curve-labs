@@ -1,0 +1,242 @@
+---
+import SiteLayout from '@layouts/SiteLayout.astro';
+import ContactForm from '@components/ContactForm.astro';
+import { bookingLabel, greenLoopStory, kesariStory, nycStory, proofLine, services, site, testKartStory, whyPoints } from '@content/site';
+
+const problems = [
+  'People enquire about your product, have a call, and then disappear.',
+  'Buyers like what you offer but choose a cheaper competitor.',
+  'Your team is speaking to plenty of prospects, but not enough of the right ones.',
+  "You've tried ads, agencies or hiring, but the results haven't lasted.",
+  "Sales and marketing are both busy, but neither can clearly show what's working.",
+  'You have a feeling something is wrong, but no clear evidence of where.',
+];
+
+const questions = [
+  {
+    number: '01',
+    title: 'Who should you be selling to?',
+    text: 'Pinpoint the segments and buyers that matter most. We use your customers, market and sales evidence to decide who is worth pursuing.',
+  },
+  {
+    number: '02',
+    title: 'Why should they choose you?',
+    text: "If buyers can't see what makes your business different, price often becomes the deciding factor. We help clarify your positioning and communicate your value.",
+  },
+  {
+    number: '03',
+    title: 'What happens after someone shows interest?',
+    text: 'From the first enquiry to a signed deal, we look at where opportunities slow down, why they drop off and what can improve the process.',
+  },
+];
+
+const freeNote = "Free. You don't pay for this session.";
+---
+<SiteLayout title="Tuning Curve Labs | Your team is busy. So why isn't sales growing?" description="Tuning Curve Labs helps B2B founders of 5–100 person companies find what's holding sales back, then fix it with their team." path="/">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-inner">
+      <p class="hero-audience" data-reveal>For B2B founders of 5–100 person companies who want to turn more opportunities into revenue.</p>
+      <h1 id="hero-title" data-reveal style="--rd:60ms">Your team is busy.<br />So why isn't <em>sales growing?</em></h1>
+      <p class="hero-lede" data-reveal style="--rd:180ms">More leads, more marketing, another salesperson. You've tried adding more, but the numbers aren't moving the way they should.</p>
+      <div class="hero-actions" data-reveal style="--rd:240ms">
+        <a class="button button--blue" href={site.bookingUrl} target="_blank" rel="noreferrer">{bookingLabel}<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg><span class="sr-only"> (opens in a new tab)</span></a>
+        <a class="button button--outline" href="#how-we-work">See what happens in Week One</a>
+      </div>
+      <p class="free-note" data-reveal style="--rd:300ms"><span class="free-dot" aria-hidden="true"></span>{freeNote}</p>
+    </div>
+    <div class="hero-proof-wrap" data-reveal style="--rd:380ms">
+      <p class="hero-proof">{proofLine}</p>
+    </div>
+  </section>
+
+  <section class="section" id="problem" aria-labelledby="problem-title">
+    <div class="section-head">
+      <span class="eyebrow" data-reveal>The problem</span>
+      <h2 id="problem-title" data-reveal style="--rd:80ms">Growth rarely stops for just one obvious reason.</h2>
+      <p data-reveal style="--rd:160ms">Sometimes it looks like this:</p>
+    </div>
+    <div class="grid-3">
+      {problems.map((item, index) => <article class="card problem-card" data-reveal style={`--rd:${index * 90}ms`}><div class="card-num">{String(index + 1).padStart(2, '0')}</div><p>{item}</p></article>)}
+    </div>
+    <div class="problem-close" data-reveal>
+      <p>These can look like separate problems. Often, a few underlying issues are responsible for most of them.</p>
+      <p>Adding more activity without understanding the cause can make things harder to fix.</p>
+      <a class="text-link" href="#how-we-work">Let's find the cause before adding more.</a>
+    </div>
+  </section>
+
+  <section class="section" id="what-we-look-at" aria-labelledby="look-title">
+    <div class="section-head">
+      <span class="eyebrow" data-reveal>What we look at</span>
+      <h2 id="look-title" data-reveal style="--rd:80ms">Before fixing growth, we need to understand how it works.</h2>
+      <p data-reveal style="--rd:160ms">Go-to-market (GTM) is simply how your business gets its product in front of the right people and turns their interest into customers. It comes down to three questions.</p>
+    </div>
+    <div class="grid-3">
+      {questions.map((item, index) => <article class="card" data-reveal style={`--rd:${index * 90}ms`}><div class="q-num">{item.number}</div><h3>{item.title}</h3><p>{item.text}</p></article>)}
+    </div>
+  </section>
+
+  <section class="section" id="services" aria-labelledby="services-title">
+    <div class="section-head">
+      <span class="eyebrow" data-reveal>Services</span>
+      <h2 id="services-title" data-reveal style="--rd:80ms">Where we can help.</h2>
+      <p data-reveal style="--rd:160ms">Six areas of B2B growth. We recommend only the ones that match what we find.</p>
+    </div>
+    <div class="grid-3 svc-grid">
+      {services.map((service, index) => <details class="card svc" data-reveal style={`--rd:${index * 80}ms`}>
+        <summary><span class="svc-n">{service.number}</span><span class="svc-t"><b>{service.name}</b><em>{service.problem}</em></span><span class="svc-x" aria-hidden="true"></span></summary>
+        <p>{service.summary}</p>
+        <a class="text-link" href={`/services/#${service.slug}`}>Service details</a>
+      </details>)}
+    </div>
+    <div class="center-cta" data-reveal><a class="button button--outline" href="/services/">See all services</a></div>
+  </section>
+
+  <section class="section" id="how-we-work" aria-labelledby="steps-title">
+    <div class="showcase-grid">
+      <div class="showcase-copy glass sticky steps-copy">
+        <span class="eyebrow" data-reveal>How we work</span>
+        <h2 id="steps-title" data-reveal style="--rd:90ms">No guesswork. No recommendations before research.</h2>
+        <p data-reveal style="--rd:180ms">Every engagement starts by understanding your business. We look at the evidence, identify the biggest gaps and agree on what to fix first.</p>
+        <p data-reveal style="--rd:210ms">Before doing more, let's find out what's getting in the way. We research how your business attracts, converts and retains customers, then work with your team to fix what matters.</p>
+        <p data-reveal style="--rd:260ms">You don't need to prepare a perfect set of records. We start with what you already have.</p>
+      </div>
+      <ol class="steps" style="list-style:none">
+        <li class="step step--free" data-reveal style="--rd:100ms">
+          <span class="step-n">01</span>
+          <div>
+            <span class="free-tag">{freeNote}</span>
+            <h3>Free Sales Leak Read</h3>
+            <p>A 30-minute conversation about your business, what's not working and what you've already tried.</p>
+            <p>You'll leave with an initial view of where we'd investigate first. If we don't think we're the right fit, we'll tell you.</p>
+            <a class="button button--blue" href={site.bookingUrl} target="_blank" rel="noreferrer">{bookingLabel}<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg><span class="sr-only"> (opens in a new tab)</span></a>
+          </div>
+        </li>
+        <li class="step" data-reveal style="--rd:100ms">
+          <span class="step-n">02</span>
+          <div>
+            <h3>Week One: Research and Diagnosis</h3>
+            <p>We dig into the information you already have:</p>
+            <ul>
+              <li>CRM and sales records</li>
+              <li>Spreadsheets and enquiries</li>
+              <li>Emails and customer conversations</li>
+              <li>Lost deals and invoices</li>
+              <li>Conversations with your sales or marketing team</li>
+            </ul>
+            <p>You get a clear report showing what we found, the evidence behind it and the fixes we'd prioritise.</p>
+          </div>
+        </li>
+        <li class="step" data-reveal style="--rd:100ms">
+          <span class="step-n">03</span>
+          <div>
+            <h3>Put the Fix to Work</h3>
+            <p>We work with your team to implement the priority fix using the services and systems your business actually needs.</p>
+            <p>No unnecessary tools or complicated handovers. The aim is to build something your team can keep using.</p>
+          </div>
+        </li>
+        <li class="step" data-reveal style="--rd:100ms">
+          <span class="step-n">04</span>
+          <div>
+            <h3>Measure, Learn and Improve</h3>
+            <p>We look at what changed, what worked and what needs attention next.</p>
+            <p>You can continue month by month, based on what your business needs. No long-term commitment just for the sake of it.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" id="selected-work" aria-labelledby="work-title">
+    <div class="section-head">
+      <span class="eyebrow" data-reveal>Real client stories</span>
+      <h2 id="work-title" data-reveal style="--rd:80ms">What Was Wrong. How We Fixed It.</h2>
+      <p data-reveal style="--rd:160ms">Real projects. What was getting in the way, and what changed.</p>
+    </div>
+    <div class="showcase-grid">
+      <div class="showcase-copy glass">
+        <span class="badge" data-reveal>Client story {nycStory.id}</span>
+        <span class="kicker" data-reveal>{nycStory.kicker}</span>
+        <h3 class="story-title" data-reveal style="--rd:90ms">{nycStory.name}</h3>
+        <p data-reveal style="--rd:150ms">{nycStory.summary}</p>
+        <ul class="case-list" data-reveal style="--rd:210ms">
+          {nycStory.points.map((point) => <li>{point}</li>)}
+        </ul>
+        <button class="text-link" type="button" data-video-open aria-haspopup="dialog" data-video-src="/videos/leak-read-explainer.mp4" data-reveal style="--rd:270ms">Watch a short example</button>
+      </div>
+      <div class="dashboard" data-reveal style="--rd:160ms">
+        <div class="dash-top"><span>Results</span><span class="dash-meta">{nycStory.length}</span></div>
+        <dl class="stats">
+          {nycStory.results.map((result) => <div class="stat"><dt class="stat-value">{result.value}</dt><dd class="stat-label">{result.label}</dd></div>)}
+        </dl>
+        <p class="dash-foot">{nycStory.withheld}</p>
+      </div>
+    </div>
+    <div class="grid-3 work-cards">
+      <article class="card" data-reveal>
+        <span class="badge">Client story {testKartStory.id}</span>
+        <span class="kicker">{testKartStory.kicker}</span>
+        <h3>{testKartStory.name}</h3>
+        <p>{testKartStory.summary}</p>
+        <ul>{testKartStory.points.map((point) => <li>{point}</li>)}</ul>
+        {testKartStory.results.map((result) => <><span class="stat-value">{result.value}</span><div class="stat-label">{result.label}</div></>)}
+        <p class="note">{testKartStory.note}</p>
+      </article>
+      <article class="card" data-reveal style="--rd:90ms">
+        <span class="badge">Client story {greenLoopStory.id}</span>
+        <span class="kicker">{greenLoopStory.kicker}</span>
+        <h3>{greenLoopStory.name}</h3>
+        <dl class="gl">
+          <dt>What we did</dt>
+          <dd>{greenLoopStory.did}</dd>
+          <dt>What changed, in the client's words</dt>
+        </dl>
+        <blockquote class="quote">“{greenLoopStory.quote.text}”<cite>{greenLoopStory.quote.attribution}</cite></blockquote>
+        {greenLoopStory.results.map((result) => <><span class="stat-value">{result.value}</span><div class="stat-label">{result.label}</div></>)}
+      </article>
+      <article class="card" data-reveal style="--rd:180ms">
+        <span class="badge">Client story {kesariStory.id}</span>
+        <span class="kicker">{kesariStory.kicker}</span>
+        <h3>{kesariStory.name}</h3>
+        <p>{kesariStory.summary}</p>
+        <ul>{kesariStory.points.map((point) => <li>{point}</li>)}</ul>
+        {kesariStory.results.map((result) => <><span class="stat-value">{result.value}</span><div class="stat-label">{result.label}</div></>)}
+        <p class="note">{kesariStory.note}</p>
+      </article>
+    </div>
+    <dialog class="leak-video-dialog" data-video-dialog aria-labelledby="leak-video-title">
+      <div class="leak-video-heading"><h2 id="leak-video-title">How we find the sales leak</h2><button class="leak-video-close" type="button" data-video-close aria-label="Close video">Close <span aria-hidden="true">×</span></button></div>
+      <video controls playsinline preload="none" data-leak-video><source src="/videos/leak-read-explainer.mp4" type="video/mp4" />Your browser does not support embedded video.</video>
+    </dialog>
+  </section>
+
+  <section class="section" id="why" aria-labelledby="why-home-title">
+    <div class="section-head">
+      <span class="eyebrow" data-reveal>Why us</span>
+      <h2 id="why-home-title" data-reveal style="--rd:80ms">We care about fixing the right problem, not selling you more work.</h2>
+    </div>
+    <div class="grid-4">
+      {whyPoints.map((point, index) => <article class="card" data-reveal style={`--rd:${index * 90}ms`}><h3>{point.title}</h3><p>{point.text}</p></article>)}
+    </div>
+    <div class="center-cta" data-reveal><a class="button button--outline" href="/why-tcl/">More on why us</a></div>
+  </section>
+
+  <section class="section" id="contact" aria-labelledby="final-title">
+    <div class="cta-card">
+      <h2 id="final-title" data-reveal style="--rd:60ms">Before you spend more on growth, find out what's getting in the way.</h2>
+      <p data-reveal style="--rd:140ms">Let's look at what's happening in your business and work out where to focus first.</p>
+      <div class="hero-actions" data-reveal style="--rd:220ms">
+        <a class="button button--blue" href={site.bookingUrl} target="_blank" rel="noreferrer">{bookingLabel}<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg><span class="sr-only"> (opens in a new tab)</span></a>
+      </div>
+      <p class="free-note" data-reveal style="--rd:300ms"><span class="free-dot" aria-hidden="true"></span>{freeNote}</p>
+    </div>
+    <div class="contact">
+      <div class="contact-copy glass" data-reveal>
+        <h2 id="contact-title">Tell us what's not working.</h2>
+        <p>You don't need a perfect brief. Just tell us a little about your business and what's been frustrating you.</p>
+        <a class="contact-email" href={`mailto:${site.email}`}>{site.email}</a>
+      </div>
+      <div data-reveal style="--rd:120ms"><ContactForm /></div>
+    </div>
+  </section>
+</SiteLayout>

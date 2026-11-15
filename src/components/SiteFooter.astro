@@ -1,0 +1,34 @@
+---
+import { site } from '@content/site';
+import { Image } from 'astro:assets';
+import logo from '../../assets/tcl-logo-header.png';
+---
+<footer class="site-footer">
+  <div class="footer-main wrap">
+    <a class="footer-logo" href="/" aria-label="Tuning Curve Labs home">
+      <Image src={logo} alt="Tuning Curve Labs logo" width={112} height={112} loading="lazy" />
+    </a>
+    <div class="footer-col">
+      <span class="eyebrow">Explore</span>
+      <a href="/about/">About</a>
+      <a href="/services/">Services</a>
+      <a href="/why-tcl/">Why us</a>
+      <a href="/#contact">Contact</a>
+    </div>
+    <div class="footer-col footer-contact">
+      <span class="eyebrow">Get in touch</span>
+      <a href={`mailto:${site.email}`}>{site.email}</a>
+      <a href={site.whatsappUrl} target="_blank" rel="noreferrer">WhatsApp<span class="sr-only"> (opens in a new tab)</span></a>
+      <span>{site.legalName}</span>
+      <span>{site.location}</span>
+      <div class="social-links">
+        {site.socials.map((item) => <a href={item.href} target="_blank" rel="noreferrer">{item.label}<span class="sr-only"> (opens in a new tab)</span></a>)}
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom wrap">
+    <span>© {new Date().getFullYear()} Tuning Curve Labs. All rights reserved.</span>
+    <a href="/privacy/">Privacy Notice</a>
+  </div>
+  <div class="footer-credit wrap">Created by <strong>Anish Reddy</strong></div>
+</footer>
