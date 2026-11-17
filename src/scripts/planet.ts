@@ -492,10 +492,19 @@ const initPlanet = (canvasEl: HTMLCanvasElement): PlanetHandle | null => {
         try { return await load(url); } catch { await new Promise((resolve) => setTimeout(resolve, 1200)); return load(url); }
       };
       let nightTexture: THREE.Texture | null = null;
-      try {
-        const lights = await loadWithRetry(`${ASSET}/planet-lights.glb`);
-        nightTexture = (firstMesh(lights.scene)?.material as THREE.MeshStandardMaterial | undefined)?.map ?? null;
-      } catch { /* optional */ }
+
+      loadWithRetry(`${ASSET}/planet-lights.glb`)
+        .then((lights) => {
+          nightTexture = (firstMesh(lights.scene)?.material as THREE.MeshStandardMaterial | undefined)?.map ?? null;
+      
+          if (planetUniforms && nightTexture) {
+            planetUniforms.nightBlendTexture.value = nightTexture;
+          }
+        })
+        .catch(() => {
+          // Optional: continue without night lights.
+        });
+      
       const planet = await loadWithRetry(`${ASSET}/planet.glb`);
       const mesh = firstMesh(planet.scene);
       if (!mesh) return;
