@@ -60,8 +60,7 @@ const canonical = new URL(path, 'https://www.tuningcurvelabs.com').toString();
       import '../scripts/interactions.ts';
       // The WebGL scene (three.js) is a separate chunk loaded after the page has painted.
       const loadScene = () => import('../scripts/planet.ts');
-      if (document.readyState === 'complete') loadScene();
-      else window.addEventListener('load', loadScene, { once: true });
+      loadScene();
     </script>
   </body>
 </html>
