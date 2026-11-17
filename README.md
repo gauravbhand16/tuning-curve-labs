@@ -1,10 +1,11 @@
-# Tuning Curve Labs Website
+# Tuning Curve Labs
 
-## Languages
-- Astro
-- TypeScript
-- HTML
-- CSS
+Official website of Tuning Curve Labs, a B2B GTM strategy and execution consultancy.
 
-## Website
-https://tuningcurvelabs.netlify.app/
+### What's Included
+- Redesigned website with a responsive, modern interface.
+- Dedicated About, Services, Blog, Team and Why TCL pages.
+- SEO-friendly metadata and canonical URLs.
+- Contact form with email API integration.
+- Google Analytics 4 tracking.
+- Built with Astro and modern web technologies.
